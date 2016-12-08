@@ -28,3 +28,6 @@ print (data_limpia)
 
 data_limpia = data_limpia.replace("0", " ").replace("  ", " ")
 print(data_limpia)
+
+
+print(datos.split("\\"))
