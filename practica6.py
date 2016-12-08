@@ -11,3 +11,5 @@ print("%5d" % a)
 import math
 print(math.ceil(15.25))
 print(math.floor(15.25))
+
+print("Valor Unitario:",valor_unitario, "Cantidad:", cantidad, "Total:",(cantidad *  valor_unitario))
