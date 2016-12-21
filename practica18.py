@@ -16,3 +16,7 @@ print (valor_max)
 
 matriz = np.random.randint(1,50,(10,5))
 print (matriz)
+
+print (np.sum(matriz))
+
+print (np.sum(matriz,axis = 1))
