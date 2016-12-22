@@ -45,3 +45,17 @@ print (indices)
 matriz_ordenada = matriz[indices,:]
 print (matriz_ordenada)
 
+matriz = [[1,3,6],
+    [5,7,9],
+    [3,18,0]]
+
+arreglo = np.array(matriz,float)
+print(arreglo)
+
+arreglo = np.array(matriz,str)
+print(arreglo)
+
+matriz = np.random.randint(1,30,(6,5))
+print (matriz)
+matriz[matriz > 15]=-1
+print (matriz)
