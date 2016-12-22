@@ -33,3 +33,15 @@ print (np.transpose(submatriz))
 #redimensionar matriz
 matriz2 = np.reshape(matriz,(25,2))
 print (matriz2)
+
+matriz = np.random.randint(1,30,(6,5))
+print (matriz)
+print (np.sort(matriz, axis = 0))
+
+#ordenamiento x columna segun indice
+indices = np.argsort(matriz[:3],axis=0)
+print (indices)
+
+matriz_ordenada = matriz[indices,:]
+print (matriz_ordenada)
+
