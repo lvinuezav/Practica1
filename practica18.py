@@ -20,3 +20,16 @@ print (matriz)
 print (np.sum(matriz))
 
 print (np.sum(matriz,axis = 1))
+
+submatriz = matriz[1:6,2:5]
+print (submatriz)
+print (np.mean(submatriz))
+
+submatriz = matriz[1:6,[1,3,4]]
+print (submatriz)
+
+print (np.transpose(submatriz))
+
+#redimensionar matriz
+matriz2 = np.reshape(matriz,(25,2))
+print (matriz2)
