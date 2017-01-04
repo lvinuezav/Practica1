@@ -18,4 +18,3 @@ for resultado in datos["results"]:
 
 
 
-    
