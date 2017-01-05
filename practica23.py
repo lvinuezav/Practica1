@@ -15,6 +15,3 @@ for resultado in datos["results"]:
     for k,v in resultado["context"].items():
         print (k,v)
     print ("##########################################")
-
-
-
