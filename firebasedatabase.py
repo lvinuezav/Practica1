@@ -1,5 +1,8 @@
 import pyrebase
 
+DB_URL = "https://practica26-7e4d4.firebaseio.com/users/Morty"
+CONTENEDOR ="usuarios"
+
 config = {
   "apiKey": "AIzaSyARFfd7TGS4RfZLCECzD3tPqsinacAcxDI",
   "authDomain": "practica26-7e4d4.firebaseapp.com",
@@ -20,9 +23,10 @@ db = firebase.database()
 
 # data to save
 data = {
-    "name": "Mortimer 'Morty' Smith", "correo":"lvinueza@eas.ec", "colores":"rojo"
+    "name": "Ana Vacacela", "edad":"76", "correo":None,"colores":"rojo"
 }
 
 # Pass the user's idToken to the push method
 #results = db.child("users").push(data, user['idToken'])
-db.child("users").child("Morty").set(data)
+#db.child("users").child("0919806083").set(data)
+results = db.child(CONTENEDOR).child("0919806083").set(data)
