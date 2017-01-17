@@ -1,3 +1,13 @@
+class Activo:
+    def __init__(self, nombre, valor):
+        self.nombre = nombre
+        self.valor = valor
+
+class Pasivo:
+    def __init__(self, nombre, valor):
+        self.nombre = nombre
+        self.valor = valor
+
 class Persona:
     TIPO_IDENTIFICACION_CEDULA = "C"
     TIPO_IDENTIFICACION_RUC = "R"
@@ -51,8 +61,11 @@ class Cliente(PersonaNatural, PersonaJuridica):
     TIPO_PERSONA_NATURAL = 1
     TIPO_PERSONA_JURIDICA = 2
 
-    def __init__(self, tipo_persona, **args):
+    def __init__(self, tipo_persona, activos, pasivos, **args):
         self.tipo_persona = tipo_persona
+        self.activos = activos
+        self.pasivos = pasivos
+
         if tipo_persona == self.TIPO_PERSONA_NATURAL:
             PersonaNatural.__init__(self, args["cedula"], args['nombres'], args['apellidos'], args["edad"] )
         else:
@@ -64,8 +77,30 @@ class Cliente(PersonaNatural, PersonaJuridica):
         else:
             PersonaJuridica.imprimir_informacion(self)
 
-cl1 = Cliente(Cliente.TIPO_PERSONA_JURIDICA, ruc="0963135435", razon_social="ESPOL")
-cl1.imprimir_informacion()
+    def obtenerPatrimonio(self):
+        patrimonio = 0
+        for activo in self.activos:
+            patrimonio += activo.valor
+
+        for pasivo in self.pasivos:
+            patrimonio -= pasivo.valor
+
+        return patrimonio
+
+
+# cl1 = Cliente(Cliente.TIPO_PERSONA_JURIDICA, ruc="0963135435", razon_social="ESPOL")
+# cl1.imprimir_informacion()
 print("#################################3")
-cl2 = Cliente(Cliente.TIPO_PERSONA_NATURAL, cedula="1351351",nombres="Freank", apellidos="Malo", edad=30)
+
+activos = []
+pasivos = []
+
+activos.append(Activo("casa", 80000))
+activos.append(Activo("auto", 25000))
+
+pasivos.append(Pasivo("prestamo h", 50000))
+pasivos.append(Pasivo("tarjeta", 3000))
+
+cl2 = Cliente(Cliente.TIPO_PERSONA_NATURAL, activos, pasivos ,cedula="1351351",nombres="Freank", apellidos="Malo", edad=30)
 cl2.imprimir_informacion()
+print(cl2.obtenerPatrimonio())
