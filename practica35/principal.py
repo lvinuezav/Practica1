@@ -1,4 +1,4 @@
-from practica35.interfaces.usuario.usuario import Ui_creacion_usuario
+from practica35.interfaces.usuario.creacion_usuario import Ui_creacion_usuario
 from PyQt5 import QtWidgets
 if __name__ == "__main__":
     import sys

@@ -6,7 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+from practica35.usuario.Usuario import Usuario
 from PyQt5 import QtCore, QtGui, QtWidgets
+from practica35.usuario.Usuario import Usuario
+from sqlalchemy.orm import sessionmaker
+from practica35.base.creacionBaseDatos import engine
 
 class Ui_creacion_usuario(object):
     def setupUi(self, creacion_usuario):
@@ -14,11 +18,11 @@ class Ui_creacion_usuario(object):
         creacion_usuario.resize(400, 126)
         self.lineEdit = QtWidgets.QLineEdit(creacion_usuario)
         self.lineEdit.setGeometry(QtCore.QRect(152, 30, 201, 20))
-        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setObjectName("txt_usuario")
         self.lineEdit_2 = QtWidgets.QLineEdit(creacion_usuario)
         self.lineEdit_2.setGeometry(QtCore.QRect(150, 60, 201, 20))
         self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEdit_2.setObjectName("txt_contrasenia")
         self.btn_guardar = QtWidgets.QPushButton(creacion_usuario)
         self.btn_guardar.setGeometry(QtCore.QRect(150, 90, 75, 23))
         self.btn_guardar.setObjectName("btn_guardar")
@@ -33,6 +37,9 @@ class Ui_creacion_usuario(object):
         self.btn_cancelar.setObjectName("btn_cancelar")
 
         self.retranslateUi(creacion_usuario)
+
+        self.btn_guardar.clicked.connect(self.grabar_usuario())
+
         QtCore.QMetaObject.connectSlotsByName(creacion_usuario)
 
     def retranslateUi(self, creacion_usuario):
@@ -43,3 +50,17 @@ class Ui_creacion_usuario(object):
         self.label_2.setText(_translate("creacion_usuario", "Contraseña"))
         self.btn_cancelar.setText(_translate("creacion_usuario", "Cancelar"))
 
+    def grabar_usuario(self):
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        usuario1 = Usuario()
+        usuario1.usuario = self.txt_usuario.text()
+        usuario1.contrasenia = self.txt_contrasenia.text()
+
+        session.add(usuario1)
+
+        session.commit()
+        session.close()
+
+        #self.txt_usuario.se
